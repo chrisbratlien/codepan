@@ -115,6 +115,9 @@ export default {
     Event.$on('save-gist', saveNew => {
       this.saveGist({ token: this.githubToken, saveNew })
     })
+    Event.$on('save-local', saveNew => {
+      this.saveLocal({ token: this.githubToken, saveNew })
+    })
   },
   beforeDestroy() {
     window.removeEventListener('message', this.listenIframe)
@@ -242,6 +245,22 @@ export default {
       })
     },
 
+
+    async saveLocal({ token, saveNew } = {}) {
+      this.editorSaving();
+      const files = makeGist(
+        {
+          js: this.js,
+          css: this.css,
+          html: this.html
+        },
+        {
+          showPans: this.visiblePans,
+          activePan: this.activePan
+        }
+      );
+      console.log('saveLocal!!!',files);
+    },
     /**
      * Save gist
      * When you are not logged in (no github token) it saves as guest gist

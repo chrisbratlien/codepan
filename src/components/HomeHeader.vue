@@ -99,6 +99,19 @@
         @click="saveGist">
         Save
       </el-button>
+      <el-button
+        v-if="!inIframe"
+        :icon="editorStatus === 'saving' ? 'el-icon-loading' : 'el-icon-upload2'"
+        size="mini"
+        plain
+        :disabled="editorStatus === 'saving'"
+        :title="saveButtonTitle"
+        v-tippy="{position: 'bottom'}"
+        class="home-header-right-item"
+        @click="saveLocal">
+        Save Local
+      </el-button>
+
       <el-dropdown
         v-if="!inIframe"
         class="home-header-right-item home-header-more"
@@ -292,6 +305,12 @@
         }
         Event.$emit('save-gist')
       },
+
+      saveLocal() {
+        Event.$emit('save-local')
+      },
+
+
       handleDropdownCommand(command) {
         if (command === 'save-new-gist') {
           Event.$emit('save-gist', true)
