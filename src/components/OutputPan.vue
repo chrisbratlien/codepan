@@ -259,6 +259,7 @@ export default {
           activePan: this.activePan
         }
       );
+      
       console.log('saveLocal!!!',files);
     },
     /**

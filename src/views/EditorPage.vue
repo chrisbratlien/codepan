@@ -58,6 +58,7 @@ import CompiledCodeDialog from '@/components/CompiledCodeDialog.vue'
 async function handleRouteChange(to, vm) {
   let boilerplate
   let gist
+  let pan
 
   const { name } = to
 
@@ -69,6 +70,10 @@ async function handleRouteChange(to, vm) {
   } else if (name === 'gist') {
     gist = to.params.gist
   }
+  else if (name === 'pan') {
+    pan = to.params.pan
+    console.log('pan?!?',pan);
+  }
 
   if (boilerplate) {
     await vm.setBoilerplate(boilerplate)
@@ -79,6 +84,17 @@ async function handleRouteChange(to, vm) {
     Event.$emit('refresh-editor')
     Event.$emit('run')
   }
+  else if (pan) {
+    alert(pan);
+    console.log('vm',vm);
+
+    await vm.setPan(pan)
+    //bring these back after debugging setPan...
+    //Event.$emit('refresh-editor')
+    //Event.$emit('run')
+  }
+
+
 
   await vm.setAutoRun(true)
 
@@ -154,7 +170,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['setBoilerplate', 'setGist', 'showPans', 'setAutoRun']),
+    ...mapActions(['setBoilerplate', 'setGist', 'setPan', 'showPans', 'setAutoRun']),
     isVisible(pan) {
       return this.visiblePans.indexOf(pan) !== -1
     },
