@@ -88,7 +88,8 @@ export default {
       'visiblePans',
       'activePan',
       'githubToken',
-      'iframeStatus'
+      'iframeStatus',
+      'onAPanRightNow'
     ]),
     ...mapGetters([
       'isLoggedIn',
@@ -116,7 +117,13 @@ export default {
       this.saveGist({ token: this.githubToken, saveNew })
     })
     Event.$on('save-local', saveNew => {
-      this.saveLocal({ token: this.githubToken, saveNew })
+
+
+      console.log('woo woo ONAPAN:',this.onAPanRightNow);
+
+      let saveANewPan = !this.onAPanRightNow;
+
+      this.saveLocal(saveANewPan)
     })
   },
   beforeDestroy() {
@@ -246,8 +253,9 @@ export default {
     },
 
 
-    async saveLocal({ token, saveNew } = {}) {
-        const shouldUpdateGist = this.canUpdateGist && !saveNew
+    async saveLocal(saveNew) {
+        const shouldUpdateGist = !saveNew
+        console.log('saveLocal saveNew',saveNew,'shouldUpdateGist',shouldUpdateGist);
 
       this.editorSaving();
       const body = {
@@ -258,11 +266,10 @@ export default {
           activePan: this.activePan
       };
 
-        console.log('saveLocal!!!',body);
-
-        const method = shouldUpdateGist ? 'PUT' : 'POST'
-        const url = `http://localhost:4000/${shouldUpdateGist ?
-          `/${this.$route.params.pan}` :
+        console.log('saveLocal body',body);
+        const method = saveNew ? 'POST' : 'PUT';
+        const url = `http://localhost:4000/${ shouldUpdateGist ?
+          `${this.$route.params.pan}/writeTokenGoesHere` :
           ''
         }`;
 

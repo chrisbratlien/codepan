@@ -75,7 +75,8 @@ const store = new Vuex.Store({
     userMeta: JSON.parse(localStorage.getItem('codepan:user-meta')) || {},
     editorStatus: 'saved',
     iframeStatus: null,
-    transforming: false
+    transforming: false,
+    onAPanRightNow: false
   },
   mutations: {
     UPDATE_CODE(state, { type, code }) {
@@ -236,9 +237,12 @@ const store = new Vuex.Store({
 
       console.log('setPan',commit,'dispatch',dispatch,state,pan);
 
+      if (pan && pan.length) {
+        state.onAPanRightNow = true;
+      }
+
       const data = await fetch(`http://localhost:4000/${pan}`)
       const json = await data.json();
-
 
       const main = {
         html: {},
