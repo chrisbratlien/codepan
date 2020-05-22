@@ -22,13 +22,6 @@ const router = new Router({
       path: '/gist/:gist',
       component: EditorPage
     },
-
-    {
-      name: 'pan',
-      path: '/pan/:pan',
-      component: EditorPage
-    },
-
     {
       name: 'pan',
       path: '/pan/:pan',

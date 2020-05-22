@@ -187,6 +187,9 @@ const store = new Vuex.Store({
     async setBoilerplate({ dispatch }, boilerplate) {
       progress.start()
 
+
+      console.log('setBoilerplate',boilerplate)
+
       if (typeof boilerplate === 'string') {
         boilerplate = await boilerplates[boilerplate]()
       }
@@ -225,12 +228,26 @@ const store = new Vuex.Store({
         Event.$emit('focus-editor', activePan)
       })
 
+      console.log('done??')
       progress.done()
     },
 
-    async setPan( a,b) {
-      console.log('setPan',a,b)
-      alert('wee');
+    async setPan({ commit, dispatch, state }, pan) {
+
+      console.log('setPan',commit,'dispatch',dispatch,state,pan);
+
+      const data = await fetch(`http://localhost:4000/${pan}`)
+      const json = await data.json();
+
+
+      const main = {
+        html: {},
+        css: {},
+        js: {},
+        ...json
+      }
+
+      await dispatch('setBoilerplate', main)
       return 'OK';
     },
 

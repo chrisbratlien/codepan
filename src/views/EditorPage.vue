@@ -88,18 +88,11 @@ async function handleRouteChange(to, vm) {
     Event.$emit('refresh-editor')
     Event.$emit('run')
   } else if (pan) {
+    console.log('vm',vm);
+    ///alert('wee pause');
     await vm.setPan(pan)
     Event.$emit('refresh-editor')
     Event.$emit('run')
-  }
-  else if (pan) {
-    alert(pan);
-    console.log('vm',vm);
-
-    await vm.setPan(pan)
-    //bring these back after debugging setPan...
-    //Event.$emit('refresh-editor')
-    //Event.$emit('run')
   }
 
 

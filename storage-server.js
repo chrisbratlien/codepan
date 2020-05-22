@@ -121,7 +121,7 @@ function readDocument(readToken,obj) {
 
 //POST
 app.post('/', function (req, res) {
-	console.log('POST /',req.headers,req.body,req);
+	console.log('POST /',req.headers,req.body);
 	
 	let [readToken, writeToken, body ] = [ randString(), randString(), req.body ];
 	console.log('BODY?', body);
