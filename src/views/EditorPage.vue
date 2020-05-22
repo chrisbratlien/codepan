@@ -72,6 +72,10 @@ async function handleRouteChange(to, vm) {
   } else if (name === 'pan') {
     pan = to.params.pan
   }
+  else if (name === 'pan') {
+    pan = to.params.pan
+    console.log('pan?!?',pan);
+  }
 
 
 
@@ -88,6 +92,17 @@ async function handleRouteChange(to, vm) {
     Event.$emit('refresh-editor')
     Event.$emit('run')
   }
+  else if (pan) {
+    alert(pan);
+    console.log('vm',vm);
+
+    await vm.setPan(pan)
+    //bring these back after debugging setPan...
+    //Event.$emit('refresh-editor')
+    //Event.$emit('run')
+  }
+
+
 
   await vm.setAutoRun(true)
 
@@ -163,7 +178,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['setBoilerplate', 'setGist', 'showPans', 'setAutoRun']),
+    ...mapActions(['setBoilerplate', 'setGist', 'setPan', 'showPans', 'setAutoRun']),
     isVisible(pan) {
       return this.visiblePans.indexOf(pan) !== -1
     },

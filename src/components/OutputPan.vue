@@ -287,7 +287,6 @@ export default {
         } else {
           this.$router.push(`/pan/${readToken}`)
         }
-
     },
     /**
      * Save gist

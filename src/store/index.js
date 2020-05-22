@@ -227,6 +227,13 @@ const store = new Vuex.Store({
 
       progress.done()
     },
+
+    async setPan( a,b) {
+      console.log('setPan',a,b)
+      alert('wee');
+      return 'OK';
+    },
+
     async setGist({ commit, dispatch, state }, id) {
       const data = await api(`gists/${id}`, state.githubToken, progress.done)
       const files = data.files
