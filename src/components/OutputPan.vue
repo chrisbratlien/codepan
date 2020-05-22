@@ -283,15 +283,17 @@ export default {
           body: JSON.stringify(body)
         });
 
-        let json = await res.json();
-        console.log('res',res,'json',json);
-
-        let [readToken, writeToken ] = [json.readToken, json.writeToken];
 
         if (shouldUpdateGist) {
+
+          //fetch res just returned the string "Updated"
           console.log('SHOULD')
           this.editorSaved()
         } else {
+          //first save will return json...
+          let json = await res.json();
+          console.log('res',res,'json',json);
+          let [readToken, writeToken ] = [json.readToken, json.writeToken];
           this.$router.push(`/pan/${readToken}`)
         }
     },
