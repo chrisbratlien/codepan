@@ -247,19 +247,47 @@ export default {
 
 
     async saveLocal({ token, saveNew } = {}) {
+        const shouldUpdateGist = this.canUpdateGist && !saveNew
+
       this.editorSaving();
-      const files = makeGist(
-        {
+      const body = {
           js: this.js,
           css: this.css,
-          html: this.html
-        },
-        {
+          html: this.html,
           showPans: this.visiblePans,
           activePan: this.activePan
+      };
+
+        console.log('saveLocal!!!',body);
+
+        const method = shouldUpdateGist ? 'PUT' : 'POST'
+        const url = `http://localhost:4000/${shouldUpdateGist ?
+          `/${this.$route.params.pan}` :
+          ''
+        }`;
+
+        console.log('method',method,'url',url);
+
+        let res = await fetch(url, { 
+          method: method,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        });
+
+        let json = await res.json();
+        console.log('res',res,'json',json);
+
+        let [readToken, writeToken ] = [json.readToken, json.writeToken];
+
+        if (shouldUpdateGist) {
+          console.log('SHOULD')
+          this.editorSaved()
+        } else {
+          this.$router.push(`/pan/${readToken}`)
         }
-      );
-      console.log('saveLocal!!!',files);
+
     },
     /**
      * Save gist

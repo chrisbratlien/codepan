@@ -23,6 +23,11 @@ const router = new Router({
       component: EditorPage
     },
     {
+      name: 'pan',
+      path: '/pan/:pan',
+      component: EditorPage
+    },
+    {
       name: 'boilerplate',
       path: '/boilerplate/:boilerplate',
       component: EditorPage

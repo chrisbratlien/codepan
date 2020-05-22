@@ -58,6 +58,7 @@ import CompiledCodeDialog from '@/components/CompiledCodeDialog.vue'
 async function handleRouteChange(to, vm) {
   let boilerplate
   let gist
+  let pan
 
   const { name } = to
 
@@ -68,7 +69,11 @@ async function handleRouteChange(to, vm) {
     boilerplate = to.params.boilerplate
   } else if (name === 'gist') {
     gist = to.params.gist
+  } else if (name === 'pan') {
+    pan = to.params.pan
   }
+
+
 
   if (boilerplate) {
     await vm.setBoilerplate(boilerplate)
@@ -76,6 +81,10 @@ async function handleRouteChange(to, vm) {
     Event.$emit('run')
   } else if (gist) {
     await vm.setGist(gist)
+    Event.$emit('refresh-editor')
+    Event.$emit('run')
+  } else if (pan) {
+    await vm.setPan(pan)
     Event.$emit('refresh-editor')
     Event.$emit('run')
   }
