@@ -1,0 +1,19 @@
+{
+    "js": {
+        "code": "\nlet vscale = (v,factor) => v.map(n => n * factor)\nlet vadd = (a,b) => a.map((asubi,i) => asubi + b[i]) // a-> + b-> \nlet vdiff = (a,b) => vadd(a,vscale(b,-1));\nlet vsub = vdiff;\nlet vlerp = (a,b,factor) => vadd(a,vscale(vdiff(b,a),factor))\nlet vdot = (a,b) => a.reduce((accum,asubi,i) => accum + asubi * b[i],0)\nLA = { vlerp: vlerp };\n  const partition = numBuckets => {\n    let result = [];\n    for (let i = 0; i < numBuckets; i += 1) {\n        result.push(i/numBuckets);\n    }\n    return result;\n  }\n  const bucketize = (min, max, numBuckets) => partition(numBuckets)\n    .map(tween => LA.vlerp([min],[max],tween))\n  \n  let justProp = (anArray,prop) => anArray.map(o => o[prop]);\n  \n  const getMinMax = function(anArray,variable) {\n    let values = anArray.map(o => o[variable]);\n    return {\n      min: Math.min(...values), \n      max: Math.max(...values) \n    };\n    ////return [ Math.min(...values), Math.max(...values) ];\n  }\nlet data = [\n  { age: 32, weight: 120},\n  { age: 22, weight: 130},\n  { age: 52, weight: 40},\n  { age: 24, weight: 270}\n];\nlet mm = getMinMax(data,'age');\nlet justWeight = justProp(data,'weight');\nconsole.log(justWeight,data,\n  'mm',mm,\n  'justWeight',justWeight\n);\nconsole.log(bucketize(200,856,5));",
+        "transformer": "js"
+    },
+    "css": {
+        "code": "",
+        "transformer": "css"
+    },
+    "html": {
+        "code": "",
+        "transformer": "html"
+    },
+    "showPans": [
+        "js",
+        "console"
+    ],
+    "activePan": "js"
+}

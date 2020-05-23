@@ -1,0 +1,20 @@
+{
+    "js": {
+        "code": "/* @jsx h */\nconst { h, render } = preact\nconst { useState } = preactHooks\n\nfunction useFormInput(initialValue) {\n  \n  const [value,setValue] = useState(initialValue);\n  \n  return {\n    value: value,\n    onChange: e => setValue(e.target.value)\n  }\n  \n}\n\n\nconst App = () => {\n  const [count, setCount] = useState(0)\n\n  const inc = () => setCount(count + 1)\n\n  const dec = () => setCount(count - 1)\n\n  const parrots = useFormInput(23)\n  \n  \n  return (\n    <div>\n      <h2>{count}</h2>\n      <button onClick={inc}>Increment</button>\n      <button onClick={dec}>Decrement</button>\n     \n <br/>     <label>Parrots</label>\n    <input {...parrots}\n      />\n      <br />\n      He has chosen {parrots.value} parrots\n   \n    </div>\n    \n    \n    \n    \n  )\n}\n\nrender(<App />, document.body)\n",
+        "transformer": "babel"
+    },
+    "css": {
+        "code": "body {\n  background: wheat;\n  font-weight: 400;\n  letter-spacing: 0.07rem;\n}",
+        "transformer": "css"
+    },
+    "html": {
+        "code": "\n<a target=\"_blank\" href=\"52yozk47aq2\">Link to self</a>\n<script src=\"https://unpkg.com/preact@10/dist/preact.umd.js\"></script>\n<script src=\"https://unpkg.com/preact@10/hooks/dist/hooks.umd.js\"></script>\n",
+        "transformer": "html"
+    },
+    "showPans": [
+        "js",
+        "output",
+        "html"
+    ],
+    "activePan": "js"
+}
