@@ -1,6 +1,6 @@
 {
     "js": {
-        "code": "let scale = (n, factor) => n * factor;\nlet lerp = (a,b,factor) => a + scale(b-a,factor)\n//console.log(lerp(0,10,0.4));\nconst partition = numBuckets => {\n  //partition the range 0 to 1 into \n  //numBuckets evenly spaced stops, starting with 0\n    let result = [];\n    for (let i = 0; i < numBuckets; i += 1) {\n        result.push(i/numBuckets);\n    }\n    return result;\n  }\n/**\nExample:\nconsole.log(partition(4))\n> [0, 0.25, 0.5, 0.75]\n**/\n  \n\nconst bucketize = (min, max, numBuckets) => partition(numBuckets)\n    .map(tween => lerp(min,max,tween))\n\n/**\nExample:\nbucketize(0, 1000, 5)\n> [0, 200, 400, 600, 800]\n**/\nconsole.log(bucketize(-10,10,5));\n\nlet justProp = (objArray,prop) => objArray.map(o => o[prop]);\n  \nconst minMax = anArray => [\n  Math.min(...anArray),\n  Math.max(...anArray)\n];\n\nlet data = [\n  { age: 32, weight: 230, balance: -20   },\n  { age: 22, weight: 140, balance: 2 },\n  { age: 52, weight: 180, balance: 120 },\n  { age: 74, weight: 300, balance: 21 }\n];\n\nlet analyze = (anArray,numBuckets) => {\n  return Object.keys(anArray[0]).reduce(\n    (accum, col) => {\n      let justCol = justProp(anArray,col);\n      let [min, max] = minMax(justCol);\n      let buckets = bucketize(min,max,numBuckets);\n\n    accum[col] = {\n      min: min,\n      max: max,\n      buckets: buckets    \n    }\n    return accum;\n  },{})\n}\nlet report = analyze(data,5);\nconsole.log(report);",
+        "code": "let scale = (n, factor) => n * factor;\nlet lerp = (a,b,factor) => a + scale(b-a,factor)\n//console.log(lerp(0,10,0.4));\nconst partition = numBuckets => {\n  //partition the range 0 to 1 into \n  //numBuckets evenly spaced stops, starting with 0\n    let result = [];\n    for (let i = 0; i < numBuckets; i += 1) {\n        result.push(i/numBuckets);\n    }\n    return result;\n  }\n/**\nExample:\nconsole.log(partition(4))\n> [0, 0.25, 0.5, 0.75]\n**/\n  \n\nconst bucketize = (min, max, numBuckets) => partition(numBuckets)\n    .map(tween => lerp(min,max,tween))\n\n/**\nExample:\nbucketize(0, 1000, 5)\n> [0, 200, 400, 600, 800]\n**/\nconsole.log(bucketize(-10,10,5));\n\nlet justProp = (objArray,prop) => objArray.map(o => o[prop]);\n  \nconst minMax = anArray => [\n  Math.min(...anArray),\n  Math.max(...anArray)\n];\n\nconst findBucket = (anArray,v) => { \n  let i = anArray.map( (n,i) => i).find((n,i) => v <= anArray[i+1]);\n  console.log(i);\nreturn [anArray[i],anArray[i+1]];\n }\n/***\nconsole.log(findBucket([0,34,88,72],45))\n> [34, 88]\n**/\nconsole.log(findBucket([0,34,88,72],45))\n\nlet data = [\n  { age: 32, weight: 230, balance: -20   },\n  { age: 22, weight: 140, balance: 2 },\n  { age: 52, weight: 180, balance: 120 },\n  { age: 74, weight: 300, balance: 21 }\n];\n\nlet analyze = (anArray,numBuckets) => {\n  return Object.keys(anArray[0]).reduce(\n    (accum, col) => {\n      let justCol = justProp(anArray,col);\n      let [min, max] = minMax(justCol);\n      let buckets = bucketize(min,max,numBuckets);\n\n    accum[col] = {\n      min: min,\n      max: max,\n      buckets: buckets,    \n      bucketOf: v => findBucket(buckets,v) \n    }\n    return accum;\n  },{})\n}\nlet report = analyze(data,5);\nconsole.log(report);\n\nlet gems = [2,3,1,5,8,6,8];\n\n\nconsole.log(report.age.bucketOf(45))\n",
         "transformer": "js"
     },
     "css": {
@@ -13,7 +13,8 @@
     },
     "showPans": [
         "js",
-        "console"
+        "console",
+        "html"
     ],
     "activePan": "js"
 }

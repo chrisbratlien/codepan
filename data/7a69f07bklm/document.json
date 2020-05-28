@@ -1,0 +1,20 @@
+{
+    "js": {
+        "code": "const {useState, useEffect} = React;\n\n\n\nfunction useFormInput(iv,e) {\n  const [v,setV] = useState(iv);\n  useEffect(e || (x => x),[v]);\n  return {\n    value: v,\n    onChange: e => setV(e.target.value)\n  }\n}\n\nfunction Foo() {\n  \n\n  let [msg,setMsg] = useState('ok')\n  \n  let total = useFormInput(21)\n  let marquee = useFormInput('wee',() => setMsg(Math.random()))\n  return (\n    <div>\n      <h1>React stuff</h1>\n      <marquee>{marquee.value}</marquee>\n      Marquee text \n      <input {...marquee} /><br />\n      Total\n      <input {...total} />\n      <div>{total.value}</div>\n      <span>{msg}</span>\n    </div>\n  )\n  \n}\nclass App extends React.Component {\n  state = {\n    count: 0\n  }\n\n  inc = () => this.setState({\n    count: this.state.count + 1\n  })\n\n  dec = () => this.setState({\n    count: this.state.count - 1\n  })\n\n  render() {\n    return (\n      <div>\n        <h2>{ this.state.count }</h2>\n        <button onClick={this.inc}>Increment</button>\n        <button onClick={this.dec}>Decrement</button>\n        <Foo />\n      </div>\n    )\n  }\n}\n\nReactDOM.render(<App />, document.getElementById('app'))\n",
+        "transformer": "babel"
+    },
+    "css": {
+        "code": "",
+        "transformer": "css"
+    },
+    "html": {
+        "code": "<script src=\"https://unpkg.com/react@16/umd/react.development.js\"></script>\n<script src=\"https://unpkg.com/react-dom@16/umd/react-dom.development.js\"></script>\n\n<div id=\"app\"></div>\n",
+        "transformer": "html"
+    },
+    "showPans": [
+        "js",
+        "output",
+        "console"
+    ],
+    "activePan": "output"
+}

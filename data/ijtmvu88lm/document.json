@@ -8,12 +8,12 @@
         "transformer": "css"
     },
     "html": {
-        "code": "<h1>\n  Pans directory\n</h1>\n<ul>\n<li>\n  <a target=\"_blank\" href=\"ijtmvu88lm\">Pans Directory</a>           \n</li>\n\n  <li><a target=\"_blank\" href=\"pan/meersuo906k\">Buckets example</a>\n</li>\n<li>\n  <a target=\"_blank\" href=\"52yozk47aq2\">Parrots 52yozk47aq2</a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"9996ke7ilmo\">Preact counter</a>       \n</li>\n<li>\n  <a target=\"_blank\" href=\"pi7tb2mak4g\">LA vector experiments</a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n\n</ul>           \n           \n           ",
+        "code": "<h1>\n  Pans directory\n</h1>\n<ul>\n<li>\n  <a target=\"_blank\" href=\"ijtmvu88lm\">Pans Directory</a>           \n</li>\n\n  <li><a target=\"_blank\" href=\"meersuo906k\">Buckets example</a>\n</li>\n<li>\n  <a target=\"_blank\" href=\"52yozk47aq2\">Parrots 52yozk47aq2</a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"9996ke7ilmo\">Preact counter</a>       \n</li>\n<li>\n  <a target=\"_blank\" href=\"pi7tb2mak4g\">LA vector experiments</a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"7a69f07bklm\">React inc/dec and useFormInput</a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n<li>\n  <a target=\"_blank\" href=\"\"></a>           \n</li>\n\n</ul>           \n           \n           ",
         "transformer": "html"
     },
     "showPans": [
         "html",
         "output"
     ],
-    "activePan": "html"
+    "activePan": "output"
 }
