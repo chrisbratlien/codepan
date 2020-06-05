@@ -26,6 +26,11 @@ Clone this repository and install dependencies by running `yarn`, then:
 - `yarn build`: Build in production mode
 - `yarn lint`: Run eslint
 
+
+## CB
+- `node storage-server.js`: Start storage server
+- `yarn dev --port 4001`: start the web frontend
+
 ## License
 
 MIT &copy; [EGOIST](https://github.com/egoist)
