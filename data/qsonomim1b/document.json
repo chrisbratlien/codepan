@@ -1,0 +1,21 @@
+{
+    "js": {
+        "code": "\n\nfunction group(anArray,test) {\n  let prev = [];\n  return anArray.reduce( (accum,o,i) => {\n    \n    if (accum.length == 0) {\n      return [[o]]; //first element will begin the first group\n    }\n    \n    let prevGroup = accum[accum.length-1];\n    let lastOfPrevGroup = prevGroup[prevGroup.length-1];\n    \n    if (test(lastOfPrevGroup,o)) {\n      prevGroup.push(o);\n    }\n    else {\n      accum.push([o]) //fails test, begin a new group\n    }\n    \n    console.log(['prev',prevGroup]);\n\n   \n    return accum;\n    \n  },[]);  \n}\n\n\nconsole.log(group([1,0,1,1,1,2,2,2,1,0], function(a,b){ return a == b; }))",
+        "transformer": "js"
+    },
+    "css": {
+        "code": "",
+        "transformer": "css"
+    },
+    "html": {
+        "code": "<h1>\n   Group example\n</h1>",
+        "transformer": "html"
+    },
+    "showPans": [
+        "js",
+        "output",
+        "console",
+        "html"
+    ],
+    "activePan": "js"
+}
